@@ -14,7 +14,11 @@ int main()
     }
     
     //passing array to a function
-    printf("the sum of square of array is %d", sum(arr));
+    printf("the sum of square of array is %d", sum(arr)\ncontent of array is now : );
+    
+    for(i=0;i<5;i++){
+        printf("%d\t",arr[i]);
+    }
 
     return 0;
 }
@@ -30,7 +34,8 @@ void check(int num){
 int sum(int arr[]){  //9+49+(35*35=175*7=1225)+(55*55=121*25=3025)+(44*44=121*16=1936)=58+1225+3025+1936=6244
     int sum=0;
     for(int i=0;i<5;i++){
-        sum+=arr[i]*arr[i];
+        arr[i]=arr[i]*arr[i];
+        sum+=arr[i];
         //printf("%d %d\t",sum,arr[i]*arr[i]);
     }
     return sum;
