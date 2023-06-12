@@ -17,4 +17,4 @@ void func(int a , float b){
     a++;
     b++;
     printf("value inside the function : a = %d and b = %f\n", a , b);
-};
+}
