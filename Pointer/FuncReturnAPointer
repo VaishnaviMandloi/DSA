@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+int *func(int a ,int *arr );
+
+int main()
+{
+    int a = 2 ,arr[4]= {1,2,3,4} , *ptr;
+    ptr = func(a,arr);
+    printf("arr = %p , ptr = %p , *ptr = %d ",arr,ptr,*ptr );
+
+    return 0;
+}
+
+int *func(int a , int *arr){
+    arr=arr+a;
+    return arr;
+}
