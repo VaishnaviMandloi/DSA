@@ -163,10 +163,47 @@ struct node *addatend(struct node*start, int data){
 }
 
 struct node *addafter(struct node*start, int data, int item){
-    
+    struct node *tmp,*p;
+    p=start;
+    while(p!=NULL){
+        if(p->info==item){
+            tmp = (struct node*)malloc(sizeof(struct node));
+            tmp->info=data;
+            tmp->link=p->link;
+            p->link=tmp;
+            return start;
+        }
+        p=p->link;
+    }
+    printf("the item is not present in the list");
 }
 
-struct node *addbefore(struct node*start, int data,int item);
+struct node *addbefore(struct node*start, int data,int item){
+    struct node *tmp,*p;
+    if(start==NULL){
+        print("list is empty")
+        return start;
+    }
+    if(item==start->info){
+        tmp = (struct node*)malloc(sizeof(struct node));
+        tmp->info=data;
+        tmp->link=p->link;
+        p->link=tmp;
+        return start;
+    }
+    while(p->link!=NULL){
+        if(p->link->info==item){
+            tmp =(struct node*)malloc(struct node);
+            tmp->info = data;
+            tmp->link=p->link;
+            p->link=tmp;
+            return start
+        }
+        p=p->link;
+    }
+    printf("%d is not present in the list\n",item)
+}
+
 struct node*addatpos(struct node*start,int data,int pos);
 struct node *del(struct node*start,int data);
 sturct node *reverse(struct node*start);
