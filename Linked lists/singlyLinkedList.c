@@ -98,7 +98,26 @@ int main()
         }
     }
     
-struct node *create_list(struct node*start);
+struct node *create_list(struct node*start){
+    int i, n ,data;
+    
+    printf("enter the number of nodes you want to insert : ");
+    scanf("%d",&n);
+    
+    start=NULL;
+    if(n==0){
+        return start;
+    }
+    printf("enter the element to be inserted at position 1 : ");
+    scanf("%d",&data);
+    addatbeg(start,data);
+    for(i=2;i<=n,i++){
+        printf("enter the element to be inserted at position %d : ",i);
+        scanf("%d",&data);
+        addatend(start,data);
+    }
+    return start;
+}
 
 void display(struct node *start){
     struct node *p;
@@ -204,9 +223,55 @@ struct node *addbefore(struct node*start, int data,int item){
     printf("%d is not present in the list\n",item)
 }
 
-struct node*addatpos(struct node*start,int data,int pos);
-struct node *del(struct node*start,int data);
+struct node*addatpos(struct node*start,int data,int pos){
+    struct node *tmp ,*p;
+    int i;
+    
+    if(pos==1){
+        tmp->link =start;
+        start=tmp;
+        return start;
+    }
+    
+    p =start;
+    for(i=1;i<pos-1;i++){
+        p=p->link;
+    }
+    if(p==NULL){
+        print("there are less then %d elements\n",pos)
+    }
+    else{
+        tmp->link=p->link;
+        p->link=tmp;
+    }
+    return start;
+}
+
+struct node *del(struct node*start,int data){
+    struct node *tmp,*p;
+    if(start==NULL){
+        print("list is empty");
+        return start;
+    }
+    if(start->info==data){
+        tmp=start;
+        start=start->link;
+        free(tmp);
+        return start;
+    }
+    p=start;
+    while(p->link!=NULL){
+        if(p->link->info=+data){
+            tmp=p->link;
+            p->link=tmp->link;
+            free(tmp);
+            return start;
+        }
+        p=p->link;
+    }
+    printf("element %d is not found in the list",data);
+    return start;
+}
+
 sturct node *reverse(struct node*start);
     
-
-    ret
