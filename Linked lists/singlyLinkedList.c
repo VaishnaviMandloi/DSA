@@ -16,7 +16,7 @@ struct node *addafter(struct node*start, int data, int item);
 struct node *addbefore(struct node*start, int data,int item);
 struct node*addatpos(struct node*start,int data,int pos);
 struct node *del(struct node*start,int data);
-sturct node *reverse(struct node*start);
+struct node *reverse(struct node*start);
 
 int main()
 {
