@@ -108,10 +108,90 @@ void display(struct node *start){
     
 }
 
-struct node *addtoempty(struct node *start , int data);
-struct node *addatbeg(struct node*start,int data);
-struct node *addatend(struct node*start, int data);
-struct node *addafter(struct node*start, int data, int item);
-struct node *addbefore(struct node*start, int data,int item);
+struct node *addtoempty(struct node *start , int data){
+    struct node*tmp;
+    tmp=(struct node*)malloc(sizeof(struct node));
+    tmp->prev=NULL;
+    tmp->next=NULL;
+    start=tmp;
+    return start;
+}
+
+struct node *addatbeg(struct node*start,int data){
+    struct node* tmp;
+    tmp = (struct node*)malloc(sizeof(struct node));
+    tmp->info=data;
+    tmp->prev=NULL;
+    tmp->next=start;
+    start->prev=tmp;
+    start=tmp;
+    return start;
+}
+
+struct node *addatend(struct node*start, int data){
+    struct node*tmo;
+    tmp=(struct node*)malloc(sizeof(struct node));
+    tmp->info=data;
+    p=start;
+    while(p->next!=NULL){
+        p=p->next;
+    }
+    tmp->next=NULL;
+    tmp->prev=p;
+    p->next=tmp;
+    return start;
+}
+
+struct node *addafter(struct node*start, int data, int item){
+    struct node *p , *tmp;
+    tmp= (struct node*)malloc(sizeof(struct node));
+    tmp->info=data;
+    p=start;
+    while(p!=NULL){
+        if(p->info=item){
+            tmp->next=p->next;
+            tmp->prev=p;
+            if(p->next!=NULL){
+                p->next->prev=tmp;
+            }
+            p->next=tmp;
+            return start;
+        }
+        p=p->next;
+    }
+    printf("%d not present in list\n",item);
+    return start;
+}
+
+struct node *addbefore(struct node*start, int data,int item){
+    struct node *p,*tmp;
+    if(start=NULL){
+        printf("list is empty\n");
+        return start;
+    }
+    tmp = (struct node*)malloc(sizeof(struct node));
+    tmp->info=data;
+    if(start->info==item){
+        tmp->prev=NULL;
+        tmp->next=start;
+        start->prev=tmp;
+        start=tmp;
+        return start;
+    }
+    p=start;
+    while(p!=NULL){
+        if(p->info==item){
+            tmp->prev=p->prev;
+            tmp->next=p;
+            p->prev->next=tmp;
+            p->prev=tmp;
+            return start;
+        }
+        p=p->next;
+    }
+    printf("%d item not found in the list\n",item)
+    return start;
+}
+
 struct node *del(struct node*start,int data);
 sturct node *reverse(struct node*start);
