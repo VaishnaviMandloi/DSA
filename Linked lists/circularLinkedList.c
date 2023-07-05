@@ -74,7 +74,19 @@ int main()
 }
 
 struct node *create_list(struct node*last);
-void display(struct node *last);
+void display(struct node *last){
+    struct node* p;
+    if(last==NULL){
+        printf("list is empty\n");
+        return ;
+    }
+    p = last->link;
+    do{
+        printf("%d\t",p->info);
+        p=p->link;
+    }while(p!=last->link);
+}
+
 struct node*addtoempty(struct node*last,int data);
 struct node *addatbeg(struct node*last,int data);
 struct node *addatend(struct node*last, int data);
